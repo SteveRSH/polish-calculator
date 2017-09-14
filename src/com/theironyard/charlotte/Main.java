@@ -7,20 +7,25 @@ package com.theironyard.charlotte;
  */
 public class Main {
     public static void main(String[] args) {
+        // new is a keyword, after new it's a new constructor
         ReversePolishCalc rpc = new ReversePolishCalc();
 
         String rpnExpression = "2.5,4.8,+";
+
+
         double expectedResult = 7.3;
         double actualResult = rpc.calculate(rpnExpression);
+
+        // taking all the info from line 12, 13 and 14
         checkResult(rpnExpression, expectedResult, actualResult);
 
         // Write tests for the other operators (-, *, /)
 
         // Uncomment this test which has many operators
-//        rpnExpression = "5,1,2,+,4,*,+,3,-";
-//        expectedResult = 14.0;
-//        actualResult = rpn.calculate(rpnExpression);
-//        checkResult(rpnExpression, expectedResult, actualResult);
+        rpnExpression = "5,1,2,+,4,*,+,3,-";
+        expectedResult = 14.0;
+        actualResult = rpc.calculate(rpnExpression);
+        checkResult(rpnExpression, expectedResult, actualResult);
     }
 
     private static void checkResult(String expression, double expected, double actual) {

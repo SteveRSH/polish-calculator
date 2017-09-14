@@ -13,6 +13,8 @@ public class ReversePolishCalc {
 
     public double calculate(String input) {
         // 1. Use the String split method to split the string into tokens at the commas
+
+
         tokens = input.split(",");
 
         // 2. Allocate a stack as big as the number of tokens
@@ -24,6 +26,7 @@ public class ReversePolishCalc {
             String currentToken = tokens[i];
 
             // convert the current token to a number
+            //Double is used because its a null value. If the value was 0 could have used lower case double
             Double num = null;
 
             try {
@@ -37,7 +40,8 @@ public class ReversePolishCalc {
             // we just encountered an operator
             if (num != null) {
                 push(num);
-            } else {
+            }
+            else {
                 if (currentToken.equals("+")) {
                     double value1 = pop();
                     double value2 = pop();
@@ -45,7 +49,29 @@ public class ReversePolishCalc {
                     push(value2 + value1);
                 }
 
-                // TODO: implement the rest of the operators
+                // TODO: implement the rest of the operators *********
+                else if (currentToken.equals("-")) {
+                    double value1 = pop();
+                    double value2 = pop();
+
+                    push(value2 - value1);
+                }
+
+                else if (currentToken.equals("*")) {
+                    double value1 = pop();
+                    double value2 = pop();
+
+                    push(value2 * value1);
+                }
+
+                else if (currentToken.equals("/")) {
+                    double value1 = pop();
+                    double value2 = pop();
+
+                    push(value2 / value1);
+                }
+
+
             }
         }
 
@@ -55,7 +81,9 @@ public class ReversePolishCalc {
 
     private void push(String number) {
         // push on the stack
-        // TODO: write this code that pushes onto the stack
+        // TODO: write this code that pushes onto the stack  *****
+        stack[ stackTop ] = number;
+        stackTop++;
     }
 
     private void push(double d) {
